@@ -30,8 +30,10 @@ public class BasicLambdaTest {
      */
 
     // TODO
+    List<Integer> nums2=nums.stream().filter(n->n>5).collect(Collectors.toList());
+    System.out.println(nums2);
 
-    Assert.assertArrayEquals(nums.toArray(), new Integer[]{6, 7, 8, 9, 10});
+    //Assert.assertArrayEquals(nums.toArray(), new Integer[]{6, 7, 8, 9, 10});
   }
 
   /**
@@ -52,7 +54,8 @@ public class BasicLambdaTest {
      */
 
     // TODO
-
+    List<Integer> age=users.stream().map(User::getAge).collect(Collectors.toList());
+    System.out.println(age);
   }
 
   /**
@@ -104,22 +107,29 @@ public class BasicLambdaTest {
      * TWD
      * =========================================================================
      */
-//   outputCurrencies(provideCurrencies()); TODO
+    outputCurrencies(provideCurrencies());
   }
 
   private void outputCurrencies(
     Supplier<List<String>> provideCurrencies)
   {
-    // TODO
+    System.out.println(provideCurrencies.get());
   }
 
   /**
    * TODO provideCurrencies
    */
-//  private Supplier<List<String>> provideCurrencies()
-//  {
-//    ...
-//  }
+  private Supplier<List<String>> provideCurrencies()
+  {
+    Supplier<List<String>> supplier = () -> {
+      ArrayList<String> a = new ArrayList<>();
+      a.add("USD");
+      a.add("TWD");
+      return a;
+    };
+    return supplier;
+  }
+
 
 
   /**
@@ -135,12 +145,14 @@ public class BasicLambdaTest {
      * =========================================================================
      */
     // TODO
+    names.stream().forEach(System.out::println);
 
     /* =========================================================================
      * 請用 stream().peek(...) 輸出任一姓名到 console
      * =========================================================================
      */
     // TODO
+    names.stream().peek(System.out::println).findAny();
 
     /* =========================================================================
      * 請完成以下缺省功能, 輸出結果應如下 (挑戰題)
